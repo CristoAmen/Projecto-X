@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PropotipoX</string>
+    <string name="status_connected">Estado: Conectado</string>
+    <string name="status_disconnected">Estado: Desconectado</string>
+    <string name="command_forward">Adelante</string>
+    <string name="command_left">Izquierda</string>
+    <string name="command_right">Derecha</string>
+    <string name="command_back">Atrás</string>
+    <string name="command_follower">Seguidor</string>
+    <string name="command_evade">Evadir</string>
+    <string name="command_manual">Manual</string>
+
+</resources>

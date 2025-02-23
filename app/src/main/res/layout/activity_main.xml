@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <!-- Título de la App -->
+    <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proyecto Xd"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+    <!-- Subtítulo (Status) -->
+    <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado: Desconectado"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <ImageView
+            android:id="@+id/ivConnectionStatus"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvSubtitle"
+            app:layout_constraintStart_toEndOf="@id/tvSubtitle"/>
+
+    <!-- Contenedor para los botones direccionales (d-pad) -->
+    <TableLayout
+            android:id="@+id/tableLayoutDPad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+            app:layout_constraintBottom_toTopOf="@id/tvModosDisponibles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.5">
+
+        <!-- Fila superior: Botón "Adelante" -->
+        <TableRow android:gravity="center">
+            <Button
+                    android:id="@+id/btnAdelante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adelante" />
+        </TableRow>
+
+        <!-- Fila central: Botones "Izquierda" y "Derecha" -->
+        <TableRow android:gravity="center">
+            <Button
+                    android:id="@+id/btnIzquierda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Izquierda" />
+
+            <!-- Espacio entre botones -->
+            <Space
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+
+            <Button
+                    android:id="@+id/btnDerecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Derecha" />
+        </TableRow>
+
+        <!-- Fila inferior: Botón "Atrás" -->
+        <TableRow android:gravity="center">
+            <Button
+                    android:id="@+id/btnAtras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Atrás" />
+        </TableRow>
+    </TableLayout>
+
+    <!-- Texto "Modos Disponibles" sobre los botones horizontales -->
+    <TextView
+            android:id="@+id/tvModosDisponibles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modos Disponibles"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/btnHorizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="8dp"/>
+
+    <!-- Contenedor para botones adicionales dispuestos horizontalmente -->
+    <LinearLayout
+            android:id="@+id/btnHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:padding="10dp">
+
+        <Button
+                android:id="@+id/btnSeguidor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seguidor"
+                android:layout_margin="8dp"/>
+
+        <Button
+                android:id="@+id/btnEvadir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Evadir"
+                android:layout_margin="8dp"/>
+
+        <Button
+                android:id="@+id/btnManual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manual"
+                android:layout_margin="8dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
