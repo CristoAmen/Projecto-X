@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnSeguidor: Button
     private lateinit var btnEvadir: Button
     private lateinit var btnManual: Button
+    private lateinit var btnParar: Button
 
     // Configuración del escaneo BLE
     private val configuracionEscaneo = ScanSettings.Builder()
@@ -230,6 +231,7 @@ class MainActivity : AppCompatActivity() {
         btnSeguidor = findViewById(R.id.btnSeguidor)
         btnEvadir = findViewById(R.id.btnEvadir)
         btnManual = findViewById(R.id.btnManual)
+        btnParar = findViewById(R.id.btnParar)
 
         configurarListenersBotones()
         actualizarEstadoBotones(false)
@@ -243,10 +245,39 @@ class MainActivity : AppCompatActivity() {
         btnIzquierda.setOnClickListener { enviarComando("Izquierda") }
         btnDerecha.setOnClickListener { enviarComando("Derecha") }
         btnAtras.setOnClickListener { enviarComando("Atrás") }
-        btnSeguidor.setOnClickListener { enviarComando("Seguidor") }
-        btnEvadir.setOnClickListener { enviarComando("Evadir") }
-        btnManual.setOnClickListener { enviarComando("Manual") }
+        btnParar.setOnClickListener { enviarComando("Parar") }
+
+        btnSeguidor.setOnClickListener {
+            enviarComando("Seguidor")
+            // Deshabilitar botones direccionales
+            btnAdelante.isEnabled = false
+            btnIzquierda.isEnabled = false
+            btnDerecha.isEnabled = false
+            btnAtras.isEnabled = false
+            btnParar.isEnabled = false
+        }
+
+        btnEvadir.setOnClickListener {
+            enviarComando("Evadir")
+            // Deshabilitar botones direccionales
+            btnAdelante.isEnabled = false
+            btnIzquierda.isEnabled = false
+            btnDerecha.isEnabled = false
+            btnAtras.isEnabled = false
+            btnParar.isEnabled = false
+        }
+
+        btnManual.setOnClickListener {
+            enviarComando("Manual")
+            // Habilitar nuevamente los botones direccionales
+            btnAdelante.isEnabled = true
+            btnIzquierda.isEnabled = true
+            btnDerecha.isEnabled = true
+            btnAtras.isEnabled = true
+            btnParar.isEnabled = true
+        }
     }
+
 
     /**
      * Configura el adaptador Bluetooth y verifica que el dispositivo soporte BLE.
@@ -521,6 +552,7 @@ class MainActivity : AppCompatActivity() {
         btnSeguidor.isEnabled = habilitado
         btnEvadir.isEnabled = habilitado
         btnManual.isEnabled = habilitado
+        btnParar.isEnabled = habilitado
     }
 
     override fun onDestroy() {

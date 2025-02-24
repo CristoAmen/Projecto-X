@@ -12,7 +12,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proyecto Xd"
+            android:text="Proyecto X / Carro"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
@@ -60,24 +60,30 @@
                     android:text="Adelante" />
         </TableRow>
 
-        <!-- Fila central: Botones "Izquierda" y "Derecha" -->
+        <!-- Fila central: Botones "Izquierda", "Parar" y "Derecha" -->
         <TableRow android:gravity="center">
             <Button
                     android:id="@+id/btnIzquierda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Izquierda" />
+                    android:text="Izquierda"
+                    android:layout_marginEnd="16dp" />
 
-            <!-- Espacio entre botones -->
-            <Space
+            <!-- Botón Parar en el centro con icono -->
+            <Button
+                    android:id="@+id/btnParar"
                     android:layout_width="50dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="50dp"
+                    android:background="@android:color/black"
+                    android:layout_marginHorizontal="16dp"
+                    android:drawableTop="@android:drawable/ic_media_pause" />
 
             <Button
                     android:id="@+id/btnDerecha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Derecha" />
+                    android:text="Derecha"
+                    android:layout_marginStart="16dp" />
         </TableRow>
 
         <!-- Fila inferior: Botón "Atrás" -->
