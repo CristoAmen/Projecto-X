@@ -22,6 +22,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -69,7 +70,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnSeguidor: Button
     private lateinit var btnEvadir: Button
     private lateinit var btnManual: Button
-    private lateinit var btnParar: Button
+    private lateinit var btnParar: ImageView
+    private lateinit var ivConnectionStatus: ImageView
+
 
     // Configuración del escaneo BLE
     private val configuracionEscaneo = ScanSettings.Builder()
@@ -120,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                     runOnUiThread {
                         tvEstado.setText(R.string.status_connected)
                         // Aún no habilitamos los botones; se hará tras verificar el servicio.
+                        ivConnectionStatus.setImageResource(R.drawable.prendido)
                     }
 
                     // Comprueba permisos antes de descubrir servicios
@@ -140,6 +144,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d(ETIQUETA, "Desconectado del servidor GATT")
                     runOnUiThread {
                         tvEstado.setText(R.string.status_disconnected)
+                        ivConnectionStatus.setImageResource(R.drawable.apagado)
                         actualizarEstadoBotones(false)
                     }
 
@@ -224,6 +229,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun inicializarVistas() {
         tvEstado = findViewById(R.id.tvSubtitle)
+        ivConnectionStatus = findViewById(R.id.ivConnectionStatus)
         btnAdelante = findViewById(R.id.btnAdelante)
         btnIzquierda = findViewById(R.id.btnIzquierda)
         btnDerecha = findViewById(R.id.btnDerecha)
@@ -254,7 +260,10 @@ class MainActivity : AppCompatActivity() {
             btnIzquierda.isEnabled = false
             btnDerecha.isEnabled = false
             btnAtras.isEnabled = false
-            btnParar.isEnabled = false
+            //btnParar.isEnabled = false
+            // ImageView
+            btnParar.isClickable = false
+            btnParar.isFocusable = false
         }
 
         btnEvadir.setOnClickListener {
@@ -264,7 +273,10 @@ class MainActivity : AppCompatActivity() {
             btnIzquierda.isEnabled = false
             btnDerecha.isEnabled = false
             btnAtras.isEnabled = false
-            btnParar.isEnabled = false
+            //btnParar.isEnabled = false
+            // ImageView
+            btnParar.isClickable = false
+            btnParar.isFocusable = false
         }
 
         btnManual.setOnClickListener {
@@ -274,7 +286,10 @@ class MainActivity : AppCompatActivity() {
             btnIzquierda.isEnabled = true
             btnDerecha.isEnabled = true
             btnAtras.isEnabled = true
-            btnParar.isEnabled = true
+            //btnParar.isEnabled = true
+            // ImageView
+            btnParar.isClickable = false
+            btnParar.isFocusable = false
         }
     }
 
@@ -552,7 +567,10 @@ class MainActivity : AppCompatActivity() {
         btnSeguidor.isEnabled = habilitado
         btnEvadir.isEnabled = habilitado
         btnManual.isEnabled = habilitado
-        btnParar.isEnabled = habilitado
+       // btnParar.isEnabled = habilitado
+        // ImageView
+        btnParar.isClickable = habilitado
+        btnParar.isFocusable = habilitado
     }
 
     override fun onDestroy() {
